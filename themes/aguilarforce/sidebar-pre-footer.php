@@ -15,7 +15,7 @@
 	<article class="sidebar-widget-prefooter">
 		<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Aguilar force sac' , 'aguilarforce-framework' ); ?></h2><br>
 		<?php $texto = get_the_excerpt(); ?>
-		<p><?= $texto; ?></p>
+		<p class="text-justify"><?= $texto; ?></p>
 	</article><!-- /.sidebar-widget-prefooter -->
 <?php endwhile; wp_reset_postdata(); endif; ?>
 

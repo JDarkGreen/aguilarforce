@@ -310,6 +310,61 @@ function cd_meta_box_aguilarforce_url_video_save( $post_id )
         update_post_meta( $post_id, 'mb_aguilarforce_url_video_text', wp_kses( $_POST['mb_aguilarforce_url_video_text'], $allowed ) );
 }
 
+
+//>>>>>>>>> META BOX CHECKBOX BANNER ALINEACION DE CONTENIDO  <<<<<<<<<<<<<<< 
+add_action( 'add_meta_boxes', 'cd_meta_box_aguilarforce_position_banner_add' );
+
+//llamar funcion 
+function cd_meta_box_aguilarforce_position_banner_add()
+{	
+	//solo en galeria
+	add_meta_box( 'mb-aguilarforce-pos-banner', 'Posición del Banner', 'cd_meta_box_aguilarforce_position_banner_cb', 'banner', 'side', 'high' );
+}
+
+function cd_meta_box_aguilarforce_position_banner_cb( $post )
+{
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+	$values = get_post_custom( $post->ID );
+    
+    $check = isset( $values['mb_check_position_banner'] ) ? esc_attr( $values['mb_check_position_banner'][0] ) : '';
+
+    // We'll use this nonce field later on when saving.
+    wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+    ?>
+    <p>
+        <input type="checkbox" id="mb_check_position_banner" name="mb_check_position_banner" <?php checked( $check, 'on' ); ?> />
+        <label for="mb_check_position_banner">
+        	Desea Posición del Contenido del Banner a la derecha?<br/> 
+        	<span style="font-style: italic;">defecto izquierda</span>
+        </label>
+    </p>
+    <?php    
+}
+
+//GUARDANDO LA DATA
+
+add_action( 'save_post', 'cd_mb_aguilarforce_pos_banner_save' );
+function cd_mb_aguilarforce_pos_banner_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+     
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+     
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+     
+    // This is purely my personal preference for saving check-boxes
+    $chk = isset( $_POST['mb_check_position_banner'] ) && $_POST['mb_check_position_banner'][0] ? 'on' : 'off';
+
+    update_post_meta( $post_id, 'mb_check_position_banner',  $chk );
+}
+
+
+
 /***********************************************************************************************/
 /* Localization Support */
 /***********************************************************************************************/

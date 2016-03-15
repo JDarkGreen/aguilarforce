@@ -46,6 +46,14 @@ $color_bg_gray        : #747474
 	min-height: 21px
 	background: url('../images/bg-preheader.jpg') repeat-x
 
+/***************************************************************************************/
+/**-------------------------- TEXTOS           ---------------------------------------**/
+/***************************************************************************************/
+
+//TEXTO amarillo
+.text-yellow
+	color: $color_yellow_dark !important 
+
 
 /***************************************************************************************/
 /**-------------------------       WRAPPER         -        --------------------------**/
@@ -155,7 +163,7 @@ $color_bg_gray        : #747474
 
 //footer
 .mainFooter
-	background: $color_black_footer
+	background: url('../images/barra_inferior.jpg') no-repeat center / 100% 100%
 
 	.mainFooter__content
 		min-height: 88px
@@ -279,11 +287,12 @@ $color_bg_gray        : #747474
 
 	.item
 		//contenedor caption
-		.carousel-caption
+		.carousel-caption__content
 			bottom    : 48px
-			left      : 0
+			color     : white 
 			max-width : 450px
 			padding   : 0 30px
+			position  : absolute
 			text-align: left
 
 			//title
@@ -302,6 +311,13 @@ $color_bg_gray        : #747474
 				text-align    : center 
 				text-transform: uppercase
 
+		//alineado a la izquierda
+		.carousel-caption__content--left
+			left: 0
+
+		//alineado a la derecha
+		.carousel-caption__content--right
+			right: 0
 //contenedor de controles en el banner
 .content-arrowBanner
 	margin  : -25% auto 0
@@ -395,7 +411,6 @@ $color_bg_gray        : #747474
 				padding       : 10px
 				position      : absolute
 				right         : 0
-				text-align    : right
 				text-transform: uppercase
 
 /**---------------------       SECCION SERVICIOS  - PAGINA DE SERVICIOS  ---- -----------------------**/

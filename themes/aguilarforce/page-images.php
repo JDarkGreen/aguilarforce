@@ -30,9 +30,10 @@
 			<?php  
 				//query
 				$args = array(
-					'order'     => 'ASC',
-					'orderby'   => 'menu_order',
-					'post_type' => 'galeria-images',
+					'order'          => 'ASC',
+					'orderby'        => 'menu_order',
+					'post_type'      => 'galeria-images',
+					'posts_per_page' => -1
 				);
 
 				$the_query = new WP_Query($args);

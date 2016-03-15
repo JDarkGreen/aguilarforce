@@ -35,7 +35,13 @@
 	      		<section class="container">	
 	      			<div class="row">
 	      				<div class="col-xs-12">
-				      		<div class="carousel-caption">
+			      			<!-- Contenedor izquieda o derecha depende del admin -->
+			      			<?php  
+			      				//conparar metabox de contenido de banner derecha o izquierda
+			      				$position  = get_post_meta( get_the_id() , 'mb_check_position_banner' , true );
+			      				$class_pos = $position === 'on' ? 'carousel-caption__content--right' : 'carousel-caption__content--left';
+			      			?>
+			      			<div class="carousel-caption__content <?= $class_pos; ?>">
 				      			<h2><?php the_title() ?></h2>
 				      			<?php 
 				      				$content =  get_the_content();
@@ -43,7 +49,7 @@
 				      			?>
 				      				<p><?= $content; ?></p>
 				      			<?php endif; ?>
-				      		</div> <!-- /carousel-caption -->
+			      			</div> <!-- /.carousel-caption__content -->
 	      				</div> <!-- /.col-xs12 -->
 	      			</div> <!-- /.row -->
 	      		</section> <!-- /.container -->

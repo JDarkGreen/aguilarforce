@@ -44,8 +44,9 @@
 						<!-- excerpt como Título -->
 						<h2 class="">
 							<?php 
-								$excerpt = get_the_excerpt(); 
-								echo $excerpt;
+								/*$excerpt = get_the_excerpt(); 
+								echo $excerpt;*/
+								echo get_the_title();
 							?>
 						</h2>
 						<!-- Contenido -->

@@ -21,7 +21,7 @@
 					<div class="flex-wrapper__item-middle">
 						<!-- correo de administrador -->
 						<?php if( !empty($options['contact_email'])) :  ?>
-							<p><?= $options['contact_email']; ?></p>
+							<p class="text-yellow"><?= $options['contact_email']; ?></p>
 						<?php endif; ?>
 					</div> <!-- /.flex-wrapper__item-middle -->
 					<div class="flex-wrapper__item-middle text-right">

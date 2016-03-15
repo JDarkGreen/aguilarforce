@@ -33,7 +33,7 @@
 			if( $the_query->have_posts() ) :
 		?>
 			<!-- Titulo de seccion -->
-			<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Nuestros Servicios', 'aguilarforce-framework' ); ?></h2>
+			<h2 class="section-wrapper__title text-uppercase"><strong><?php _e( 'Nuestros Servicios', 'aguilarforce-framework' ); ?></strong></h2>
 			<br />
 			<!-- Contenedor de sliders -->
 			<section id="carouserl-services-home" class="section-wrapper__carousel">
