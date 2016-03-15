@@ -1,6 +1,6 @@
 <?php 
 /*
-	Template Name: Galería Page
+	Template Name: Images Galería Page
 */
 ?>
 
@@ -17,7 +17,7 @@
 	<div class="container">
 
 		<!-- Titulo -->
-		<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Galería' , 'aguilarforce-framework' ); ?></h2>
+		<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Galería de Imágenes: ' , 'aguilarforce-framework' ); ?></h2>
 		<br/>
 
 		<!-- Seccion para mostrar contenido -->
@@ -30,38 +30,13 @@
 			<?php  
 				//query
 				$args = array(
-					'post_type' => 'galeria-video',
+					'post_type' => 'galeria-images',
 				);
 
 				$the_query = new WP_Query($args);
 
 				if( $the_query->have_posts() ) : 
 			?>
-			
-			<!-- SECCION DE VIDEOS  -->
-			<section class="section-wrapper__multimedia">
-				<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Video:' , 'aguilarforce-framework' ); ?></h2>
-				<br/>
-				<!-- contenedor flex -->
-				<div class="section-wrapper__multimedia__content flex-wrapper">
-					<?php  
-						while( $the_query->have_posts() ) : $the_query->the_post();
-					?>
-					<article class="section-wrapper__multimedia__article">
-						<!-- video -->
-						<?php  
-							$video = get_post_meta( get_the_id() , 'mb_aguilarforce_url_video_text' , true ); 
-							if ( !empty($video) ) :
-								$video = str_replace("watch?v=", "embed/", $video );
-						?>
-							<iframe width="100%" height="200" src="<?= $video; ?>" allowfullscreen></iframe>
-						<?php endif; ?>
-						<!-- titulo -->
-						<h3 class="text-capitalize"> <?php the_title(); ?> </h3>
-					</article> <!-- /.section-wrapper__multimedia__article -->
-					<?php endwhile; ?>
-				</div><!-- /section-wrapper__multimedia__content flex-wrapper -->
-			</section> <!-- section-wrapper__multimedia -->
 	
 			<!-- SECCION DE IMAGENES -->
 			<section class="section-wrapper__multimedia">

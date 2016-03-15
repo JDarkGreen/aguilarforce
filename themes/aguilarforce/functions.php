@@ -151,18 +151,50 @@ add_action( 'init', 'aguilarforce_create_servicio_post_type' );
 
 /*|>>>>>>>>>>>>>>>>>>>> GALERIA  <<<<<<<<<<<<<<<<<<<<|*/
 
+//imagenes
+function aguilarforce_create_galeria_images_post_type(){
+
+	$labels = array(
+		'name' => __('Galería de Imágenes'),
+		'singular_name' => __('Imagen'),
+		'add_new' => __('Nuevo imagen o video'),
+		'add_new_item' => __('Agregar nueva imagen'),
+		'edit_item' => __('Editar imagen'),
+		'view_item' => __('Ver imagen'),
+		'search_items' => __('Buscar imagen'),
+		'not_found' => __('Imagen no encontrado'),
+		'not_found_in_trash' => __('Imagen no encontrado en la papelera'),
+	);
+
+	$args = array(
+		'labels'      => $labels,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag'),
+		'menu_icon'   => 'dashicons-format-gallery',
+	);
+
+	register_post_type('galeria-images',$args);
+}
+
+add_action( 'init', 'aguilarforce_create_galeria_images_post_type' );
+
+
+//videos
 function aguilarforce_create_galeria_videos_post_type(){
 
 	$labels = array(
 		'name' => __('Galería de Videos'),
-		'singular_name' => __('Imagen o Video'),
-		'add_new' => __('Nuevo imagen o video'),
-		'add_new_item' => __('Agregar nueva imagen o video'),
-		'edit_item' => __('Editar imagen o video'),
-		'view_item' => __('Ver imagen o video'),
-		'search_items' => __('Buscar imagen o video'),
-		'not_found' => __('Galería no encontrado'),
-		'not_found_in_trash' => __('Galería no encontrado en la papelera'),
+		'singular_name' => __('Video'),
+		'add_new' => __('Nuevo video'),
+		'add_new_item' => __('Agregar nueva video'),
+		'edit_item' => __('Editar video'),
+		'view_item' => __('Ver video'),
+		'search_items' => __('Buscar video'),
+		'not_found' => __('Video no encontrado'),
+		'not_found_in_trash' => __('Video no encontrado en la papelera'),
 	);
 
 	$args = array(
