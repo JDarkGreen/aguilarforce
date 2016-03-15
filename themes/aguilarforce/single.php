@@ -17,7 +17,7 @@
 			<h2 class="article-post__title text-uppercase"><?= get_the_title(); ?></h2>
 			<!-- Imagen destacada -->
 			<?php if( has_post_thumbnail() ) : ?>
-				<figure class="article-post__thumbnail"><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
+				<figure class="article-post__thumbnail"><?php the_post_thumbnail('full',array('class'=>'img-responsive center-block')); ?></figure>
 			<?php endif; ?>
 			<?php the_content(); ?>
 		</article><!-- ./article-post  -->

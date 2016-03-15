@@ -225,11 +225,11 @@ body, html {
   opacity: 1;
 }
 /* line 222, ../sass/master.sass */
-.mainNavigation ul li:hover, .mainNavigation ul li.current_page_item, .mainNavigation ul li.current-menu-ancestor {
+.mainNavigation ul li:hover, .mainNavigation ul li.current_page_item, .mainNavigation ul li.current-menu-ancestor, .mainNavigation ul li.current_page_parent {
   background: black;
 }
 /* line 224, ../sass/master.sass */
-.mainNavigation ul li:hover a, .mainNavigation ul li.current_page_item a, .mainNavigation ul li.current-menu-ancestor a {
+.mainNavigation ul li:hover a, .mainNavigation ul li.current_page_item a, .mainNavigation ul li.current-menu-ancestor a, .mainNavigation ul li.current_page_parent a {
   color: yellow;
 }
 /* line 226, ../sass/master.sass */
@@ -315,13 +315,15 @@ body, html {
 }
 /* line 299, ../sass/master.sass */
 .sectionBanner .item .carousel-caption__content h2 {
-  color: #e4e10a;
+  background: #e4e10a;
+  color: black;
   font-size: 1.4375em;
   font-weight: 700;
   margin: 0 auto;
+  padding: 5px;
   text-transform: uppercase;
 }
-/* line 307, ../sass/master.sass */
+/* line 309, ../sass/master.sass */
 .sectionBanner .item .carousel-caption__content p {
   background: black;
   margin: 7px auto 0;
@@ -329,22 +331,22 @@ body, html {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 315, ../sass/master.sass */
+/* line 317, ../sass/master.sass */
 .sectionBanner .item .carousel-caption__content--left {
   left: 0;
 }
-/* line 319, ../sass/master.sass */
+/* line 321, ../sass/master.sass */
 .sectionBanner .item .carousel-caption__content--right {
   right: 0;
 }
 
-/* line 322, ../sass/master.sass */
+/* line 324, ../sass/master.sass */
 .content-arrowBanner {
   margin: -25% auto 0;
   position: relative;
 }
 
-/* line 327, ../sass/master.sass */
+/* line 329, ../sass/master.sass */
 .btn-arrowBanner {
   -moz-transition: all 200ms ease;
   -o-transition: all 200ms ease;
@@ -360,7 +362,7 @@ body, html {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   width: 52px;
 }
-/* line 340, ../sass/master.sass */
+/* line 342, ../sass/master.sass */
 .btn-arrowBanner:hover {
   -moz-transform: scale(1.2, 1.2);
   -ms-transform: scale(1.2, 1.2);
@@ -368,13 +370,13 @@ body, html {
   transform: scale(1.2, 1.2);
 }
 
-/* line 344, ../sass/master.sass */
+/* line 346, ../sass/master.sass */
 .btn-arrowBanner--left {
   left: -2%;
   background: url("../images/arrows/arrow-left.png") no-repeat;
 }
 
-/* line 348, ../sass/master.sass */
+/* line 350, ../sass/master.sass */
 .btn-arrowBanner--right {
   right: -2%;
   background: url("../images/arrows/arrow-right.png") no-repeat;
@@ -383,27 +385,27 @@ body, html {
 /************************************************************************************** */
 /**---------------------       SECCION SERVICIOS  - HOME  ---- -----------------------* */
 /************************************************************************************** */
-/* line 357, ../sass/master.sass */
+/* line 359, ../sass/master.sass */
 .section-wrapper {
   background: url("../images/bg-gray-texture.jpg");
   min-height: 330px;
   padding: 35px 0;
 }
-/* line 363, ../sass/master.sass */
+/* line 365, ../sass/master.sass */
 .section-wrapper .bx-wrapper {
   margin: 0 auto;
 }
-/* line 365, ../sass/master.sass */
+/* line 367, ../sass/master.sass */
 .section-wrapper .bx-wrapper .bx-viewport {
   background: transparent;
   border: none;
   box-shadow: none;
 }
-/* line 371, ../sass/master.sass */
+/* line 373, ../sass/master.sass */
 .section-wrapper .bx-pager.bx-default-pager {
   text-align: right;
 }
-/* line 375, ../sass/master.sass */
+/* line 377, ../sass/master.sass */
 .section-wrapper .bx-pager.bx-default-pager a {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -419,23 +421,23 @@ body, html {
   width: 20px;
 }
 
-/* line 385, ../sass/master.sass */
+/* line 387, ../sass/master.sass */
 .section-wrapper__title {
   color: #fcff2a;
   font-size: 1.125em;
   margin: 0 auto;
 }
 
-/* line 391, ../sass/master.sass */
+/* line 393, ../sass/master.sass */
 .section-wrapper__carousel {
   margin: 0 auto;
 }
-/* line 398, ../sass/master.sass */
+/* line 400, ../sass/master.sass */
 .section-wrapper__carousel article a {
   display: block;
   position: relative;
 }
-/* line 403, ../sass/master.sass */
+/* line 405, ../sass/master.sass */
 .section-wrapper__carousel article a h2 {
   background: yellow;
   bottom: 0;
@@ -452,14 +454,14 @@ body, html {
 
 /**---------------------       SECCION SERVICIOS  - PAGINA DE SERVICIOS  ---- -----------------------* */
 /*ARTICULOS dentro de la seccion  */
-/* line 420, ../sass/master.sass */
+/* line 422, ../sass/master.sass */
 .sectionServices__article {
   align-items: center;
   display: flex;
   margin: 0 auto 20px;
   width: 80%;
 }
-/* line 427, ../sass/master.sass */
+/* line 429, ../sass/master.sass */
 .sectionServices__article figure {
   background: black;
   border: 2px solid white;
@@ -468,63 +470,63 @@ body, html {
   padding: 5px;
   width: 40%;
 }
-/* line 436, ../sass/master.sass */
+/* line 438, ../sass/master.sass */
 .sectionServices__article .sectionServices__article__text {
   width: 60%;
 }
-/* line 439, ../sass/master.sass */
+/* line 441, ../sass/master.sass */
 .sectionServices__article .sectionServices__article__text h2 {
   margin: 0 auto;
   color: #fcff2a;
   font-size: 1.25em;
 }
 
-/* line 447, ../sass/master.sass */
+/* line 449, ../sass/master.sass */
 .section-wrapper__container {
   color: white;
   font-size: 0.875em;
   margin: 0 auto 20px;
 }
-/* line 454, ../sass/master.sass */
+/* line 456, ../sass/master.sass */
 .section-wrapper__container h3 {
   color: #fcff2a;
   font-size: 1.125em;
   margin: 15px auto 5px;
 }
-/* line 460, ../sass/master.sass */
+/* line 462, ../sass/master.sass */
 .section-wrapper__container figure {
   border: 3px solid black;
   margin: -5px 10px 0 0;
 }
-/* line 465, ../sass/master.sass */
+/* line 467, ../sass/master.sass */
 .section-wrapper__container p {
   color: white;
 }
 
-/* line 469, ../sass/master.sass */
+/* line 471, ../sass/master.sass */
 .section-wrapper__multimedia {
   margin: 20px auto;
 }
-/* line 472, ../sass/master.sass */
+/* line 474, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__content {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
-/* line 478, ../sass/master.sass */
+/* line 480, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article {
   margin: 0 15px 15px;
   width: 30%;
   overflow: hidden;
 }
-/* line 484, ../sass/master.sass */
+/* line 486, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article img {
   -moz-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 488, ../sass/master.sass */
+/* line 490, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article:hover img {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -537,11 +539,11 @@ body, html {
 /************************************************************************************** */
 /**---------------------       SECCION BLOG- NOTICIAS    ---- -----------------------* */
 /************************************************************************************** */
-/* line 497, ../sass/master.sass */
+/* line 499, ../sass/master.sass */
 .section-wrapper__blog__content {
   flex-wrap: wrap;
 }
-/* line 501, ../sass/master.sass */
+/* line 503, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article {
   color: white;
   margin: 0 10px 10px;
@@ -549,16 +551,16 @@ body, html {
   width: 30%;
   overflow: hidden;
 }
-/* line 509, ../sass/master.sass */
+/* line 511, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a {
   display: block;
   position: relative;
 }
-/* line 514, ../sass/master.sass */
+/* line 516, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a.content-link {
   display: inline-block;
 }
-/* line 518, ../sass/master.sass */
+/* line 520, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a .caption-article {
   right: 0;
   position: absolute;
@@ -569,7 +571,7 @@ body, html {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 526, ../sass/master.sass */
+/* line 528, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a h3 {
   background: #fcff2a;
   color: black;
@@ -585,7 +587,7 @@ body, html {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 539, ../sass/master.sass */
+/* line 541, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a p {
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -595,23 +597,23 @@ body, html {
   max-height: 88px;
   padding: 20px;
 }
-/* line 549, ../sass/master.sass */
+/* line 551, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a img {
   -moz-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 555, ../sass/master.sass */
+/* line 557, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover .caption-article {
   bottom: 0;
 }
-/* line 559, ../sass/master.sass */
+/* line 561, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover h3 {
   color: #fcff2a;
   background: black;
 }
-/* line 564, ../sass/master.sass */
+/* line 566, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover img {
   -moz-transform: scale(1.4, 1.4);
   -ms-transform: scale(1.4, 1.4);
@@ -624,7 +626,7 @@ body, html {
 /************************************************************************************** */
 /**---------------------   DESARROLLO DE CADA NOTICIA     ---- -----------------------* */
 /************************************************************************************** */
-/* line 574, ../sass/master.sass */
+/* line 576, ../sass/master.sass */
 .article-post {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -632,13 +634,13 @@ body, html {
   background: black;
   padding: 15px;
 }
-/* line 580, ../sass/master.sass */
+/* line 582, ../sass/master.sass */
 .article-post p {
   color: white;
   font-size: 0.9375em;
 }
 
-/* line 585, ../sass/master.sass */
+/* line 587, ../sass/master.sass */
 .article-post__date {
   color: white;
   display: block;
@@ -647,14 +649,14 @@ body, html {
   margin: 15px 0;
 }
 
-/* line 593, ../sass/master.sass */
+/* line 595, ../sass/master.sass */
 .article-post__title {
   color: #fcff2a;
   font-size: 1.25em;
   margin: 0 auto 15px;
 }
 
-/* line 599, ../sass/master.sass */
+/* line 601, ../sass/master.sass */
 .article-post__thumbnail {
   margin: 0 auto 20px;
   width: 60%;
@@ -664,26 +666,26 @@ body, html {
 /************************************************************************************** */
 /**----------------------------   SECCI├ôN CONT├üCTENOS  -------------------------------* */
 /************************************************************************************** */
-/* line 609, ../sass/master.sass */
+/* line 611, ../sass/master.sass */
 .section-wrapper--contact {
   margin: 0 auto;
 }
-/* line 613, ../sass/master.sass */
+/* line 615, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__content {
   justify-content: center;
   margin: 20px auto 0;
 }
-/* line 618, ../sass/master.sass */
+/* line 620, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article {
   color: white;
   margin: 0 10px 0;
   width: 30%;
 }
-/* line 625, ../sass/master.sass */
+/* line 627, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article .form-group textarea, .section-wrapper--contact .section-wrapper--contact__article .form-group input {
   color: gray;
 }
-/* line 627, ../sass/master.sass */
+/* line 629, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article .form-group textarea {
   max-height: 100px;
   width: 100%;
@@ -694,7 +696,7 @@ body, html {
 /************************************************************************************** */
 /**----------------------------   MAPA GOOGLE          -------------------------------* */
 /************************************************************************************** */
-/* line 637, ../sass/master.sass */
+/* line 639, ../sass/master.sass */
 #canvas-map {
   width: 100% !important;
   height: 350px;

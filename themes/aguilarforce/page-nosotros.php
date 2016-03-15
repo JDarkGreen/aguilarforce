@@ -26,7 +26,7 @@
 				<figure class="pull-left"><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
 			<?php endif ?>
 			<?php if( !empty($the_post->post_excerpt)) : ?>
-				<p><?= $the_post->post_excerpt; ?></p>
+				<p class="text-justify"><?= $the_post->post_excerpt; ?></p>
 			<?php endif; ?>
 			
 			<div class="clearfix"></div> <!-- /.clearfix -->

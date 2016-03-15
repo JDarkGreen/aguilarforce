@@ -55,7 +55,7 @@
 
 							if( !empty($content) ) : 
 						?>
-							<p><?= $content ?></p>
+							<p class="text-justify"><?= $content ?></p>
 						<?php endif; ?>
 					</section> <!-- /.sectionServices__article -->
 					
