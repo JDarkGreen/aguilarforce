@@ -30,6 +30,8 @@
 			<?php  
 				//query
 				$args = array(
+					'order'     => 'ASC',
+					'orderby'   => 'menu_order',
 					'post_type' => 'galeria-images',
 				);
 

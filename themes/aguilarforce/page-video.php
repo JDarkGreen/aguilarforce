@@ -31,6 +31,8 @@
 				//query
 				$args = array(
 					'post_type' => 'galeria-video',
+					'order'     => 'ASC',
+					'orderby'   => 'menu_order',
 				);
 
 				$the_query = new WP_Query($args);

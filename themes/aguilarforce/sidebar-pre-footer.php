@@ -46,7 +46,7 @@
 		<!-- Link to galeria  -->
 		
 		<?php  
-			$titulo = get_page_by_title( 'Imagenes' )->ID;
+			$titulo = get_page_by_title( 'Galeria Videos' )->ID;
 		?>
 
 		<a href="<?= get_page_link($titulo); ?>" class="btn-link-black text-capitalize">
