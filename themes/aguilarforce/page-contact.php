@@ -1,0 +1,117 @@
+<?php  
+/*
+	Template Name: Página de Contacto
+*/
+?>
+
+<!-- Header -->
+<?php get_header(); ?>
+
+<?php $options = get_option('aguilarforce_custom_settings'); ?>
+
+<!-- Contenido Principal -->
+<main class="section-wrapper section-wrapper--contact">
+
+	<!-- SECCION DE MAPA -->
+	<section class="section-wrapper--contact__map">
+		<?php if( !empty($options['contact_mapa']) ) : ?>
+			<div id="canvas-map" class="canvas-map">
+		<?php endif; ?>
+		</div><!-- /. -->
+	</section><!-- /.section-wrapper--contact__map -->
+
+	<div class="container">
+		<section class="section-wrapper--contact__content flex-wrapper">
+			<!-- Titulo e imagen destacada -->
+			<section class="section-wrapper--contact__article section__presentation">
+				<h2 class="section-wrapper__title text-uppercase"><?php the_title(); ?></h2><br/>
+				<?php if( has_post_thumbnail() ) : ?>
+					<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
+				<?php endif; ?>
+			</section>
+			<!-- Datos de la Empresa -->
+			<section class="section-wrapper--contact__article section__information">
+				<!-- telefono de administrador -->
+				<?php if( !empty($options['contact_tel'])) :  ?>
+					<p class="">Tel.:<?= $options['contact_tel']; ?></p>
+				<?php endif; ?>
+				<!-- celular de administrador -->
+				<?php if( !empty($options['contact_cel'])) :  ?>
+					<?php  
+					echo "/ Cel: ";
+					$phones = explode(',', $options['contact_cel'] );
+						foreach( $phones as $phone ) : ?>
+						<p class="inline-text"><?= $phone  ?></p>
+					<?php endforeach; ?>
+				<?php endif; ?>
+				<!-- direccion administrador -->
+				<?php if( !empty($options['contact_address'])) :  ?>
+					<p><?= $options['contact_address']; ?></p>
+				<?php endif; ?>	
+			</section>
+			<!-- FORMULARIO -->
+			<form class="section-wrapper--contact__article" action="">
+				<div class="form-group">
+					<label for="input-name"><?php _e('Nombre:','aguilarforce-framework' ); ?></label>
+				    <input type="text" class="form-control" id="input-name" placeholder="Escriba su Nombre" />
+				</div><!-- /.form-group -->
+				<div class="form-group">
+					<label for="input-email"><?php _e('Email:','aguilarforce-framework' ); ?></label>
+				    <input type="email" class="form-control" id="input-email" placeholder="Escriba su Email" />
+				</div><!-- /.form-group -->
+				<div class="form-group">
+					<label for="textarea-message"><?php _e('Mensaje:','aguilarforce-framework' ); ?></label>
+					<textarea name="textarea-message" id="textarea-message" placeholder="Escriba su Mensaje"></textarea>
+				</div><!-- /.form-group -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div><!-- /.form-group -->
+			</form><!-- /end form -->
+		</section><!-- /.flex-wrapper -->
+	</div><!-- /.container -->
+
+</main><!-- /.section-wrapper -->
+
+<script type="text/javascript">
+
+	<?php  
+		$mapa = explode(',', $options['contact_mapa'] );
+		$lat = $mapa[0];
+		$lng = $mapa[1];
+	?>
+
+    var map;
+    var lat = <?php echo $lat ?>;
+    var lng = <?php echo $lng ?>;
+
+    function initialize() {
+      //crear mapa
+      map = new google.maps.Map(document.getElementById('canvas-map'), {
+        center: {lat: lat, lng: lng},
+        zoom  : 17
+      });
+
+      //infowindow
+      var infowindow    = new google.maps.InfoWindow({
+        content: <?= "'" . $options['contact_address'] . "'" ?>
+      });
+
+      //crear marcador
+      marker = new google.maps.Marker({
+        map      : map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        position : {lat: lat, lng: lng},
+        title    : "<?php _e(bloginfo('name'),'aguilarforce-framework') ?>"
+      });
+      //marker.addListener('click', toggleBounce);
+      marker.addListener('click', function() {
+        infowindow.open( map, marker);
+      });
+    }
+
+    google.maps.event.addDomListener(window, "load", initialize);
+  </script>
+
+<!-- Footer -->
+<?php get_footer(); ?>

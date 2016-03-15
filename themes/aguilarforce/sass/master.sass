@@ -1,0 +1,570 @@
+
+@import "compass/css3"
+
+/***************************************************************************************/
+/**-------------------------- RESET --------------------------------------------------**/
+/***************************************************************************************/
+body,html
+	font-size: 16px
+	width    : 100%
+
+/***************************************************************************************/
+/**-------------------------- VARIALBLES ---------------------------------------------**/
+/***************************************************************************************/
+
+$color_yellow         : #e4e10a
+$color_yellow_dark    : #d2c504
+$color_yellow_titles  : #fcff2a
+
+$color_black_prefooter: #111111
+$color_black_footer   : #222222
+
+$color_gray_text      : #a0a19b
+$color_bg_gray        : #747474
+
+/***************************************************************************************/
+/**-------------------------- CLASES Y OBJETOS  ---------------------------------------**/
+/***************************************************************************************/
+
+//>>>>>>>>>>>>>>>> BOTONES <<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+//BOTON fondo negro color amarillo
+.btn-link-black
+	background     : black
+	color          : $color_yellow_titles
+	padding        : 10px 35px
+	text-decoration: none 
+
+	&:hover,&:visited
+		text-decoration: none 
+		color          : $color_yellow_titles
+
+
+
+//section-gray-texture
+.section-gray-texture
+	min-height: 21px
+	background: url('../images/bg-preheader.jpg') repeat-x
+
+
+/***************************************************************************************/
+/**-------------------------       WRAPPER         -        --------------------------**/
+/***************************************************************************************/
+
+//RELATIVE
+.container--relative
+	position: relative
+
+//FLEX
+.flex-wrapper
+	display    : flex
+	align-items: center
+
+.flex-wrapper__item-middle
+	width: 50%
+
+.flex-wrapper--align-end
+	justify-content: flex-end
+	padding        : 0 30px
+
+/***************************************************************************************/
+/**-------------------------- HEADER   -----------------------------------------------**/
+/***************************************************************************************/
+
+.mainHeader
+
+	//preheader
+	.mainHeader__pre
+		background: url('../images/bg-preheader.jpg') 
+		padding   : 10px 0px 16px
+
+	//informacion de celulares
+	.mainHeader__info
+		color      : white
+		font-size  : 1.25em
+		font-weight: 600
+		min-height : 51px
+
+		//icon 
+		i 
+			margin: 0 12px 0 0
+		//menu
+		ul 
+			margin: 0
+			li 
+				color         : white
+				text-transform: uppercase
+
+				&:after
+					content: ' -'
+
+				&:last-child
+					&:after
+						content: ''
+
+/***************************************************************************************/
+/**-------------------------- FOOTER   -----------------------------------------------**/
+/***************************************************************************************/
+
+//ASIDE PREFOOTER
+.sidebarPreFooter
+	background: $color_black_prefooter
+	padding   : 35px 0
+
+	//contenedor
+	.sidebarPreFooter__content
+		justify-content: space-between
+
+	//widget - article
+	.sidebar-widget-prefooter
+		position: relative
+		width   : 30%
+		
+		//parrafo
+		p 
+			color: white
+			font-size: 13px
+		
+		//iframes - videos
+		iframe 
+			border: 2px solid black !important
+
+
+	//widget-fondo-gris - videos
+	.sidebar-widget-prefooter--bg-gray
+		background: $color_bg_gray 
+		min-height: 337px
+		padding   : 17px 9px
+
+		//boton  link
+		a 
+			bottom     : 31px
+			font-size  : 14px 
+			font-weight: 600
+			position   : absolute
+			right      : 16px
+			+border-radius( 5px )
+			+transition( all 300ms ease )
+
+			//activo - hover 
+			&:hover 
+				+scale( 1.1 )
+
+
+
+
+//footer
+.mainFooter
+	background: $color_black_footer
+
+	.mainFooter__content
+		min-height: 88px
+		color     : $color_gray_text
+
+	//parrafo
+	p 
+		color    : $color_gray_text
+		font-size: 13px
+		margin   : 0 auto
+
+		&.inline-text
+			display: inline-block 
+
+/***************************************************************************************/
+/**--------------------------     LOGO  --------  ------------------------------------**/
+/***************************************************************************************/
+
+//h1
+.logo
+	margin  : 0 auto 
+	position: absolute
+	top     : - 70px
+
+/***************************************************************************************/
+/**-------------------------- NAVIGATION ----------------------------------------------**/
+/***************************************************************************************/
+
+//nav
+.mainNavigation
+	background       : url('../images/bg-navigation.jpg') 
+	background-repeat: repeat-x
+	background-size  : 100% 100%
+	position         : relative
+	z-index          : 999
+
+	//menu
+	ul
+		margin : 0 auto
+		li 
+			+transition( all 300ms ease )
+			padding: 0 30px
+			//hover
+			&:hover,&.current_page_item
+				background: black
+				a 
+					color: yellow
+			a 
+				color          : white
+				display        : block
+				font-size      : 0.9375em
+				padding        : 10px 0 27px
+				text-decoration: none
+				text-transform : uppercase
+				+transition( all 300ms ease )
+
+/***************************************************************************************/
+/**-------------------------- WIDGETS    ----------------------------------------------**/
+/***************************************************************************************/
+
+//redes sociales
+
+//ul
+.menu-socialLinks
+	margin : 0 auto
+	padding: 0 30px
+
+	//li 
+	li 
+		padding: 0 8px
+
+		&:first-child
+			padding-left: 0
+
+
+		//a - link
+		a 
+			display: block
+			max-width: 45px 
+			+transition( all 300ms ease)
+
+			&:hover
+				+opacity(0.8)
+				+scale(1.09)
+
+
+/***************************************************************************************/
+/**-------------------------- ------   BANNERS   ------------------------------------**/
+/***************************************************************************************/
+
+//HOME
+.sectionBanner
+	border-bottom: 5px solid $color_yellow_dark
+
+	.item
+		//contenedor caption
+		.carousel-caption
+			bottom    : 48px
+			left      : 0
+			max-width : 450px
+			padding   : 0 30px
+			text-align: left
+
+			//title
+			h2 
+				color         : $color_yellow
+				font-size     : 1.4375em
+				font-weight   : 700
+				margin        : 0 auto 
+				text-transform: uppercase
+
+			//the content
+			p 
+				background    : black
+				margin        : 7px auto 0
+				padding       : 5px 18px
+				text-align    : center 
+				text-transform: uppercase
+
+//contenedor de controles en el banner
+.content-arrowBanner
+	margin  : -25% auto 0
+	position: relative
+
+//boton control banner
+.btn-arrowBanner
+	+transition(all 200ms ease)
+	background-color: rgba(0,0,0,0)
+	color           : #fff !important
+	display         : block
+	font-size       : 60px
+	height          : 51px
+	position        : absolute
+	text-align      : center
+	text-shadow     : 0 1px 2px rgba(0,0,0,.6)
+	width           : 52px
+
+	//hover
+	&:hover 
+		+scale(1.2)
+
+//left
+.btn-arrowBanner--left
+	left: -2%
+	background: url('../images/arrows/arrow-left.png') no-repeat
+//right
+.btn-arrowBanner--right
+	right: -2%
+	background: url('../images/arrows/arrow-right.png') no-repeat
+
+/***************************************************************************************/
+/**---------------------       SECCION SERVICIOS  - HOME  ---- -----------------------**/
+/***************************************************************************************/
+
+//wrapper
+.section-wrapper
+	background: url('../images/bg-gray-texture.jpg')
+	min-height: 330px
+	padding   : 35px 0
+
+	//bxslider wrapper
+	.bx-wrapper
+		margin: 0 auto
+		.bx-viewport
+			background: transparent
+			border    : none
+			box-shadow: none
+
+	//paginacion
+	.bx-pager.bx-default-pager
+		text-align: right
+		
+		//item 
+		a
+			+border-radius(10px)
+			+transition( all 200ms ease)
+			background: #cccccc
+			color     : transparent
+			height    : 20px
+			margin    : 0 10px
+			width     : 20px
+
+//title
+.section-wrapper__title
+	color    : $color_yellow_titles
+	font-size: 1.125em
+	margin   : 0 auto 
+
+//Carousel Services
+.section-wrapper__carousel
+	margin: 0 auto
+	
+	//articulos
+	article
+
+		//link
+		a 
+			display : block
+			position: relative 
+
+			//title
+			h2 
+				background    : yellow
+				bottom        : 0
+				color         : black
+				font-size     : 16px
+				font-weight   : 700
+				left          : 22px
+				margin        : 0 auto 
+				padding       : 10px
+				position      : absolute
+				right         : 0
+				text-align    : right
+				text-transform: uppercase
+
+
+//>>>>>>>>>>>>>>>>>>>>  CONTENIDO O WRAPPER <<<<<<<<<<<<<<<<<<<<<<<<//
+
+//section
+.section-wrapper__container
+	color    : white
+	font-size: 0.875em
+	margin   : 0 auto 20px
+	//background: black
+
+	//titulo
+	h3 
+		color    : $color_yellow_titles
+		font-size: 1.125em
+		margin   : 15px auto 5px 		
+
+	//image destacada 
+	figure 
+		border: 3px solid black
+		margin: -5px 10px 0 0
+
+	//parrafos o contenido
+	p 
+		color    : white
+
+//SECCION DE multimedia
+.section-wrapper__multimedia
+	margin: 20px auto 
+	
+	.section-wrapper__multimedia__content
+		flex-wrap      : wrap
+		justify-content: center
+		text-align     : center
+	
+	//article
+	.section-wrapper__multimedia__article
+		margin : 0 15px 15px
+		width  : 30%
+		overflow: hidden
+	
+		//image 
+		img 
+			+transition( all 500ms ease)
+				
+		&:hover
+			img 
+				+transform( scale(1.5) )
+				+opacity(0.7)
+
+/***************************************************************************************/
+/**---------------------       SECCION BLOG- NOTICIAS    ---- -----------------------**/
+/***************************************************************************************/
+
+//container
+.section-wrapper__blog__content
+	flex-wrap      : wrap
+	
+	//article
+	.section-wrapper__blog__article
+		color   : white
+		margin  : 0 10px 10px 
+		position: relative
+		width   : 30%
+		overflow: hidden
+		
+		//contenedor link
+		a
+			display : block
+			position: relative 
+
+			//clase content-link
+			&.content-link
+				display: inline-block
+			
+			//informacion
+			.caption-article
+				right         : 0
+				position      : absolute
+				bottom        : -88px
+				left          : 22px
+				+transition( all 500ms ease )
+
+			//title
+			h3 
+				background    : $color_yellow_titles
+				color         : black
+				font-size     : 16px
+				font-weight   : 700
+				margin        : 0 auto
+				min-height    : 70px
+				padding       : 10px
+				text-align    : right
+				text-transform: uppercase
+				+transition( all 500ms ease )
+
+			//content
+			p 
+				background: rgba(0,0,0,.8)
+				color     : white
+				font-size : 0.8125em
+				height    : 88px
+				margin    : 0 auto
+				max-height: 88px
+				padding   : 20px
+			
+			//image 
+			img 
+				+transition( all 500ms ease )
+	
+			//hover contenedor 
+			&:hover 
+				//caption-article
+				.caption-article
+					bottom: 0
+
+				//title
+				h3
+					color     : $color_yellow_titles
+					background: black
+
+				//image
+				img 
+					+scale(1.4)
+					+opacity(0.5)
+
+
+/***************************************************************************************/
+/**---------------------   DESARROLLO DE CADA NOTICIA     ---- -----------------------**/
+/***************************************************************************************/
+
+//article
+.article-post
+	+border-radius( 15px )
+	background: black
+	padding   : 15px
+
+	//parrafo
+	p 
+		color    : white
+		font-size: 0.9375em
+
+//dia de publicacion - span
+.article-post__date
+	color     : white 
+	display   : block
+	font-size : 0.75em
+	font-style: italic
+	margin    : 15px 0
+
+//title
+.article-post__title
+	color    : $color_yellow_titles
+	font-size: 1.25em
+	margin   : 0 auto 15px
+
+//imagen destacada
+.article-post__thumbnail
+	margin: 0 auto 20px
+	width : 60%
+	border: 3px solid white
+
+/***************************************************************************************/
+/**----------------------------   SECCIÓN CONTÁCTENOS  -------------------------------**/
+/***************************************************************************************/
+
+//contenedor
+.section-wrapper--contact
+	margin: 0 auto
+
+	//content
+	.section-wrapper--contact__content
+		justify-content: center
+		margin         : 20px auto 0
+	
+	//article
+	.section-wrapper--contact__article
+		color : white 
+		margin: 0 10px 0
+		width : 30%
+
+		//formulario
+		.form-group
+			textarea,input
+				color: gray 
+			textarea
+				max-height: 100px
+				width     : 100%
+				max-width : 100%
+				padding   : 10px
+
+/***************************************************************************************/
+/**----------------------------   MAPA GOOGLE          -------------------------------**/
+/***************************************************************************************/
+
+#canvas-map
+	width : 100% !important
+	height: 350px
