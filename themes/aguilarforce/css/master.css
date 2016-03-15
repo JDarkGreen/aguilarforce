@@ -217,11 +217,11 @@ body, html {
   opacity: 1;
 }
 /* line 214, ../sass/master.sass */
-.mainNavigation ul li:hover, .mainNavigation ul li.current_page_item {
+.mainNavigation ul li:hover, .mainNavigation ul li.current_page_item, .mainNavigation ul li.current-menu-ancestor {
   background: black;
 }
 /* line 216, ../sass/master.sass */
-.mainNavigation ul li:hover a, .mainNavigation ul li.current_page_item a {
+.mainNavigation ul li:hover a, .mainNavigation ul li.current_page_item a, .mainNavigation ul li.current-menu-ancestor a {
   color: yellow;
 }
 /* line 218, ../sass/master.sass */
@@ -434,52 +434,81 @@ body, html {
   text-transform: uppercase;
 }
 
+/**---------------------       SECCION SERVICIOS  - PAGINA DE SERVICIOS  ---- -----------------------* */
+/*ARTICULOS dentro de la seccion  */
 /* line 405, ../sass/master.sass */
+.sectionServices__article {
+  align-items: center;
+  display: flex;
+  margin: 0 auto 20px;
+  width: 80%;
+}
+/* line 412, ../sass/master.sass */
+.sectionServices__article figure {
+  background: black;
+  border: 2px solid white;
+  float: left;
+  margin: 0 15px 10px 0;
+  padding: 5px;
+  width: 40%;
+}
+/* line 421, ../sass/master.sass */
+.sectionServices__article .sectionServices__article__text {
+  width: 60%;
+}
+/* line 424, ../sass/master.sass */
+.sectionServices__article .sectionServices__article__text h2 {
+  margin: 0 auto;
+  color: #fcff2a;
+  font-size: 1.25em;
+}
+
+/* line 432, ../sass/master.sass */
 .section-wrapper__container {
   color: white;
   font-size: 0.875em;
   margin: 0 auto 20px;
 }
-/* line 412, ../sass/master.sass */
+/* line 439, ../sass/master.sass */
 .section-wrapper__container h3 {
   color: #fcff2a;
   font-size: 1.125em;
   margin: 15px auto 5px;
 }
-/* line 418, ../sass/master.sass */
+/* line 445, ../sass/master.sass */
 .section-wrapper__container figure {
   border: 3px solid black;
   margin: -5px 10px 0 0;
 }
-/* line 423, ../sass/master.sass */
+/* line 450, ../sass/master.sass */
 .section-wrapper__container p {
   color: white;
 }
 
-/* line 427, ../sass/master.sass */
+/* line 454, ../sass/master.sass */
 .section-wrapper__multimedia {
   margin: 20px auto;
 }
-/* line 430, ../sass/master.sass */
+/* line 457, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__content {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
-/* line 436, ../sass/master.sass */
+/* line 463, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article {
   margin: 0 15px 15px;
   width: 30%;
   overflow: hidden;
 }
-/* line 442, ../sass/master.sass */
+/* line 469, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article img {
   -moz-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 446, ../sass/master.sass */
+/* line 473, ../sass/master.sass */
 .section-wrapper__multimedia .section-wrapper__multimedia__article:hover img {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -492,11 +521,11 @@ body, html {
 /************************************************************************************** */
 /**---------------------       SECCION BLOG- NOTICIAS    ---- -----------------------* */
 /************************************************************************************** */
-/* line 455, ../sass/master.sass */
+/* line 482, ../sass/master.sass */
 .section-wrapper__blog__content {
   flex-wrap: wrap;
 }
-/* line 459, ../sass/master.sass */
+/* line 486, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article {
   color: white;
   margin: 0 10px 10px;
@@ -504,16 +533,16 @@ body, html {
   width: 30%;
   overflow: hidden;
 }
-/* line 467, ../sass/master.sass */
+/* line 494, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a {
   display: block;
   position: relative;
 }
-/* line 472, ../sass/master.sass */
+/* line 499, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a.content-link {
   display: inline-block;
 }
-/* line 476, ../sass/master.sass */
+/* line 503, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a .caption-article {
   right: 0;
   position: absolute;
@@ -524,7 +553,7 @@ body, html {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 484, ../sass/master.sass */
+/* line 511, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a h3 {
   background: #fcff2a;
   color: black;
@@ -540,7 +569,7 @@ body, html {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 497, ../sass/master.sass */
+/* line 524, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a p {
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -550,23 +579,23 @@ body, html {
   max-height: 88px;
   padding: 20px;
 }
-/* line 507, ../sass/master.sass */
+/* line 534, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a img {
   -moz-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 513, ../sass/master.sass */
+/* line 540, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover .caption-article {
   bottom: 0;
 }
-/* line 517, ../sass/master.sass */
+/* line 544, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover h3 {
   color: #fcff2a;
   background: black;
 }
-/* line 522, ../sass/master.sass */
+/* line 549, ../sass/master.sass */
 .section-wrapper__blog__content .section-wrapper__blog__article a:hover img {
   -moz-transform: scale(1.4, 1.4);
   -ms-transform: scale(1.4, 1.4);
@@ -579,7 +608,7 @@ body, html {
 /************************************************************************************** */
 /**---------------------   DESARROLLO DE CADA NOTICIA     ---- -----------------------* */
 /************************************************************************************** */
-/* line 532, ../sass/master.sass */
+/* line 559, ../sass/master.sass */
 .article-post {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -587,13 +616,13 @@ body, html {
   background: black;
   padding: 15px;
 }
-/* line 538, ../sass/master.sass */
+/* line 565, ../sass/master.sass */
 .article-post p {
   color: white;
   font-size: 0.9375em;
 }
 
-/* line 543, ../sass/master.sass */
+/* line 570, ../sass/master.sass */
 .article-post__date {
   color: white;
   display: block;
@@ -602,14 +631,14 @@ body, html {
   margin: 15px 0;
 }
 
-/* line 551, ../sass/master.sass */
+/* line 578, ../sass/master.sass */
 .article-post__title {
   color: #fcff2a;
   font-size: 1.25em;
   margin: 0 auto 15px;
 }
 
-/* line 557, ../sass/master.sass */
+/* line 584, ../sass/master.sass */
 .article-post__thumbnail {
   margin: 0 auto 20px;
   width: 60%;
@@ -619,26 +648,26 @@ body, html {
 /************************************************************************************** */
 /**----------------------------   SECCI├ôN CONT├üCTENOS  -------------------------------* */
 /************************************************************************************** */
-/* line 567, ../sass/master.sass */
+/* line 594, ../sass/master.sass */
 .section-wrapper--contact {
   margin: 0 auto;
 }
-/* line 571, ../sass/master.sass */
+/* line 598, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__content {
   justify-content: center;
   margin: 20px auto 0;
 }
-/* line 576, ../sass/master.sass */
+/* line 603, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article {
   color: white;
   margin: 0 10px 0;
   width: 30%;
 }
-/* line 583, ../sass/master.sass */
+/* line 610, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article .form-group textarea, .section-wrapper--contact .section-wrapper--contact__article .form-group input {
   color: gray;
 }
-/* line 585, ../sass/master.sass */
+/* line 612, ../sass/master.sass */
 .section-wrapper--contact .section-wrapper--contact__article .form-group textarea {
   max-height: 100px;
   width: 100%;
@@ -649,7 +678,7 @@ body, html {
 /************************************************************************************** */
 /**----------------------------   MAPA GOOGLE          -------------------------------* */
 /************************************************************************************** */
-/* line 595, ../sass/master.sass */
+/* line 622, ../sass/master.sass */
 #canvas-map {
   width: 100% !important;
   height: 350px;

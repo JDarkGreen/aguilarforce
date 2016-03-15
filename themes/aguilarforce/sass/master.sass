@@ -211,7 +211,7 @@ $color_bg_gray        : #747474
 					+transition( all 300ms ease )
 					+opacity(1)
 
-			&:hover,&.current_page_item
+			&:hover,&.current_page_item,&.current-menu-ancestor
 				background: black
 				a 
 					color: yellow
@@ -398,6 +398,33 @@ $color_bg_gray        : #747474
 				text-align    : right
 				text-transform: uppercase
 
+/**---------------------       SECCION SERVICIOS  - PAGINA DE SERVICIOS  ---- -----------------------**/
+.sectionServices
+
+/*ARTICULOS dentro de la seccion  */
+.sectionServices__article
+	align-items: center 
+	display    : flex
+	margin     : 0 auto 20px
+	width      : 80%
+
+	//imagen 
+	figure 
+		background: black
+		border    : 2px solid white
+		float     : left
+		margin    : 0 15px 10px 0
+		padding   : 5px 
+		width     : 40%
+
+	//contenido
+	.sectionServices__article__text
+		width: 60%
+		//titulo
+		h2 
+			margin   : 0 auto 
+			color    : #fcff2a
+			font-size: 1.25em
 
 //>>>>>>>>>>>>>>>>>>>>  CONTENIDO O WRAPPER <<<<<<<<<<<<<<<<<<<<<<<<//
 

@@ -24,7 +24,8 @@
 		<section class="section-wrapper--contact__content flex-wrapper">
 			<!-- Titulo e imagen destacada -->
 			<section class="section-wrapper--contact__article section__presentation">
-				<h2 class="section-wrapper__title text-uppercase"><?php the_title(); ?></h2><br/>
+				<h2 class="section-wrapper__title text-uppercase"><?php the_title(); ?></h2>
+				<p><?php _e('¡Llene el formulario y solicite más información!','inox-framework'); ?></p>  
 				<?php if( has_post_thumbnail() ) : ?>
 					<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
 				<?php endif; ?>
