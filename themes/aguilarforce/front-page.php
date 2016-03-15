@@ -23,7 +23,9 @@
 			//the query
 			$args = array(
 				'post_type'     => 'servicio',
-				'post_per_page' => 6
+				'post_per_page' => 6,
+				'orderby'       => 'menu_order',
+				'order'         => 'ASC'
 			);
 
 			$the_query = new WP_Query($args);
