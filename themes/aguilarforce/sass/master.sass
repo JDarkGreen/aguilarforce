@@ -63,6 +63,12 @@ $color_bg_gray        : #747474
 .container--relative
 	position: relative
 
+//container centrado al 90]%
+.container--center90
+	display: block
+	margin : 0 auto 
+	width  : 90%
+
 //FLEX
 .flex-wrapper
 	display    : flex
@@ -294,6 +300,7 @@ $color_bg_gray        : #747474
 			padding   : 0 30px
 			position  : absolute
 			text-align: left
+			top       : 50%
 
 			//title
 			h2 
@@ -315,11 +322,11 @@ $color_bg_gray        : #747474
 
 		//alineado a la izquierda
 		.carousel-caption__content--left
-			left: 0
+			left: 10%
 
 		//alineado a la derecha
 		.carousel-caption__content--right
-			right: 0
+			right: 10%
 //contenedor de controles en el banner
 .content-arrowBanner
 	margin  : -25% auto 0
@@ -344,16 +351,26 @@ $color_bg_gray        : #747474
 
 //left
 .btn-arrowBanner--left
-	left: -2%
-	background: url('../images/arrows/arrow-left.png') no-repeat
+	left           : -2%
+	background     : url('../images/arrows/arrow-prev-services.png') no-repeat
+	background-size: 100%
 //right
 .btn-arrowBanner--right
-	right: -2%
-	background: url('../images/arrows/arrow-right.png') no-repeat
+	right          : -2%
+	background     : url('../images/arrows/arrow-next-services.png') no-repeat
+	background-size: 100%
 
 /***************************************************************************************/
 /**---------------------       SECCION SERVICIOS  - HOME  ---- -----------------------**/
 /***************************************************************************************/
+
+//seccion con posicion relativa
+.section-wrapper-relative
+	position: relative
+
+//seccion con padding
+.section-wrapper--padding
+	padding: 0 2%
 
 //wrapper
 .section-wrapper
@@ -363,7 +380,7 @@ $color_bg_gray        : #747474
 
 	//bxslider wrapper
 	.bx-wrapper
-		margin: 0 auto
+		margin: 0 15px
 		.bx-viewport
 			background: transparent
 			border    : none
@@ -377,16 +394,20 @@ $color_bg_gray        : #747474
 		a
 			+border-radius(10px)
 			+transition( all 200ms ease)
-			background: #cccccc
+			background: black
 			color     : transparent
 			height    : 20px
 			margin    : 0 10px
 			width     : 20px
 
+			//activo
+			&.active
+				background: $color_yellow_titles !important
+
 //title
 .section-wrapper__title
 	color    : $color_yellow_titles
-	font-size: 1.125em
+	font-size: 1.625em
 	margin   : 0 auto 
 
 //Carousel Services
@@ -397,7 +418,7 @@ $color_bg_gray        : #747474
 	article
 
 		//link
-		a 
+		a,.inside
 			display : block
 			position: relative 
 
@@ -415,6 +436,27 @@ $color_bg_gray        : #747474
 				right         : 0
 				text-transform: uppercase
 
+//flechas para el carousel 
+.section-wrapper__carousel__arrow 
+	cursor  : pointer 
+	height  : 32px
+	margin  : -16px auto 0
+	position: absolute
+	top     : 50%
+	width   : 32px
+	z-index : 9999999
+
+//flecha prev
+.section-wrapper__carousel__arrow--prev
+	background     : url('../images/arrows/arrow-prev-services.png') no-repeat
+	background-size: 100%
+	left           : -30px
+//next
+.section-wrapper__carousel__arrow--next
+	background     : url('../images/arrows/arrow-next-services.png') no-repeat
+	background-size: 100%
+	right          : -20px
+
 /**---------------------       SECCION SERVICIOS  - PAGINA DE SERVICIOS  ---- -----------------------**/
 .sectionServices
 
@@ -428,20 +470,51 @@ $color_bg_gray        : #747474
 	//imagen 
 	figure 
 		background: black
-		border    : 2px solid white
+		border    : 5px solid white
 		float     : left
-		margin    : 0 15px 10px 0
+		margin    : 0 50px 10px 0
+		overflow  : hidden
 		padding   : 5px 
 		width     : 40%
+		+transition( all 500ms ease )
+
+		&:hover
+			border: 5px solid $color_yellow_titles
+
+			//image
+			img
+				+scale(1.2)
+
+		//imagen interna
+		img
+			+transition( all 500ms ease )
+
+
 
 	//contenido
 	.sectionServices__article__text
 		width: 60%
 		//titulo
 		h2 
-			margin   : 0 auto 
 			color    : #fcff2a
-			font-size: 1.25em
+			font-size: 1.625em
+			margin   : 0 auto 20px
+			position : relative
+
+			span.title
+				background: black 
+				padding   : 0 10px 0 0
+				position  : relative
+				z-index   : 9999
+
+		//franja amarilla
+		.yellow-line
+			border-bottom: 3px solid yellow
+			bottom       : 5px
+			left         : 0
+			position     : absolute
+			width        : 99%
+			z-index      : 999
 
 //>>>>>>>>>>>>>>>>>>>>  CONTENIDO O WRAPPER <<<<<<<<<<<<<<<<<<<<<<<<//
 

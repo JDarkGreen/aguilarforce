@@ -33,8 +33,8 @@
 	    	<div class="item <?= $i == 0 ? 'active' : '' ?>">
 	      		<?php echo the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ) ); ?>
 	      		<section class="container">	
-	      			<div class="row">
-	      				<div class="col-xs-12">
+
+	      				<div class="">
 			      			<!-- Contenedor izquieda o derecha depende del admin -->
 			      			<?php  
 			      				//conparar metabox de contenido de banner derecha o izquierda
@@ -50,8 +50,8 @@
 				      				<p><?= $content; ?></p>
 				      			<?php endif; ?>
 			      			</div> <!-- /.carousel-caption__content -->
-	      				</div> <!-- /.col-xs12 -->
-	      			</div> <!-- /.row -->
+	      				</div> <!-- /.-->
+
 	      		</section> <!-- /.container -->
 	    	</div> <!-- /.item -->
     	<?php endif; ?>

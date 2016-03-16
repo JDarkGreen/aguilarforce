@@ -32,22 +32,36 @@
 
 			if( $the_query->have_posts() ) :
 		?>
+		<div class="section-wrapper--padding">
+			
 			<!-- Titulo de seccion -->
 			<h2 class="section-wrapper__title text-uppercase"><strong><?php _e( 'Nuestros Servicios', 'aguilarforce-framework' ); ?></strong></h2>
 			<br />
-			<!-- Contenedor de sliders -->
-			<section id="carouserl-services-home" class="section-wrapper__carousel">
-				<?php while( $the_query->have_posts() ): $the_query->the_post(); ?>
-					<article class="">
-						<a href="<?php the_permalink(); ?>">
-							<figure>
-								<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
-							</figure>
-							<h2><?php the_title(); ?></h2>
-						</a>
-					</article>
-				<?php endwhile; ?>
-			</section><!-- /.section-wrapper__carousel -->		
+
+			<!-- Contenedor position relative -->
+			<div class="section-wrapper-relative">
+				<!-- Contenedor de sliders -->
+				<section id="carouserl-services-home" class="section-wrapper__carousel">
+					<?php while( $the_query->have_posts() ): $the_query->the_post(); ?>
+						<article class="">
+							<div class="inside">
+								<figure>
+									<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
+								</figure>
+								<h2><?php the_title(); ?></h2>
+							</div>
+						</article>
+					<?php endwhile; ?>
+
+				</section><!-- /.section-wrapper__carousel -->	
+
+				<!-- FLECHAS -->
+				<div id="service-prev" class="section-wrapper__carousel__arrow section-wrapper__carousel__arrow--prev"></div>
+				<div id="service-next" class="section-wrapper__carousel__arrow section-wrapper__carousel__arrow--next"></div>
+
+			</div> <!-- /.section-wrapper-relative -->
+		
+		</div> <!-- /.section-wrapper--padding -->
 		<?php endif; ?>
 	</div><!-- /container -->	
 </section><!-- /section-wrapper -->

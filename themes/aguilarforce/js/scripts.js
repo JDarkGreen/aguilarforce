@@ -13,14 +13,28 @@ var j = jQuery.noConflict();
 		});
 
 		//Carousel Servicios en el Home - libreria bxSlider
-		j('#carouserl-services-home').bxSlider({
-			minSlides  : 1,
-			maxSlides  : 3,
-			moveSlides : 3,
-			slideMargin: 80,
-			controls   : false,
-			slideWidth : 310
+		var slider_service = j('#carouserl-services-home').bxSlider({
+			auto        : true,
+			autoDelay   : 1500,
+			controls    : false,
+			infiniteLoop: true,
+			maxSlides   : 3,
+			slideMargin : 80,
+			slideWidth  : 310,
+			pager       : true,
 		});
+
+		j('#service-prev').on('click',function(){
+	   		slider_service.goToPrevSlide();
+	      	return false;
+	    });
+
+	    j('#service-next').on('click',function(){
+	      	slider_service.goToNextSlide();
+	      	return false;
+	    });
+
+		
 
 		/****************** GALERIA  ************************/
 		//Imagenes en la seccion servicios

@@ -11,25 +11,32 @@
 	<div class="container">
 
 		<section class="article-post">
+			
+			<!-- contenedor  -->
+			<div class="container--center90">
+				
+				<!-- Titulo -->
+				<h2 class="article-post__title text-uppercase">
+					<?php _e( 'Servicios', 'aguilarforce-framework'); ?>
+				</h2>
 
-			<!-- Titulo -->
-			<h2 class="article-post__title text-uppercase"><?php _e( 'Servicios', 'aguilarforce-framework'); ?></h2>
+				<?php  
+					//the query
+					$args = array(
+						'post_type' => 'servicio',
+						'orderby'   => 'menu_order',
+						'order'     => 'ASC'
+					);
 
-			<?php  
-				//the query
-				$args = array(
-					'post_type' => 'servicio',
-					'orderby'   => 'menu_order',
-					'order'     => 'ASC'
-				);
+					$the_query = new WP_Query($args);
 
-				$the_query = new WP_Query($args);
+					if( $the_query->have_posts() ) :
 
-				if( $the_query->have_posts() ) :
+				?> 
+					<!-- Descripcion:  -->
+					<p><?php _e( 'Nuestros principales servicios:', 'aguilarforce-framework'); ?></p>
 
-			?> 
-				<!-- Descripcion:  -->
-				<p><?php _e( 'Nuestros principales servicios:', 'aguilarforce-framework'); ?></p>
+			</div> <!-- /.container--center90 -->
 
 			<?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
 				
@@ -37,17 +44,21 @@
 				<article class="sectionServices__article">
 					<!-- Imagen -->
 					<?php if( has_post_thumbnail() ) : ?>
-						<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
+						<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive center-block')); ?></figure>
 					<?php endif; ?>
 
 					<section class="sectionServices__article__text">
 						<!-- excerpt como Título -->
 						<h2 class="">
-							<?php 
-								/*$excerpt = get_the_excerpt(); 
-								echo $excerpt;*/
-								echo get_the_title();
-							?>
+							<span class="title">
+								<?php 
+									/*$excerpt = get_the_excerpt(); 
+									echo $excerpt;*/
+									echo get_the_title();
+								?>
+							</span>
+							<!-- Span franja amarilla -->
+							<span class="yellow-line"></span>
 						</h2>
 						<!-- Contenido -->
 						<?php 
