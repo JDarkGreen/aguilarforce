@@ -24,7 +24,7 @@
 		<section class="section-wrapper--contact__content flex-wrapper">
 			<!-- Titulo e imagen destacada -->
 			<section class="section-wrapper--contact__article section__presentation">
-				<h2 class="section-wrapper__title text-uppercase"><?php the_title(); ?></h2>
+				<h2 class="section-wrapper__title text-uppercase"><strong><?php the_title(); ?></strong></h2><br/>
 				<p><?php _e('¡Llene el formulario y solicite más información!','inox-framework'); ?></p>  
 				<?php if( has_post_thumbnail() ) : ?>
 					<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
@@ -32,22 +32,25 @@
 			</section>
 			<!-- Datos de la Empresa -->
 			<section class="section-wrapper--contact__article section__information">
-				<!-- telefono de administrador -->
-				<?php if( !empty($options['contact_tel'])) :  ?>
-					<p class="">Tel.:<?= $options['contact_tel']; ?></p>
-				<?php endif; ?>
+
 				<!-- celular de administrador -->
 				<?php if( !empty($options['contact_cel'])) :  ?>
 					<?php  
-					echo "/ Cel: ";
+					echo "RPM: ";
 					$phones = explode(',', $options['contact_cel'] );
 						foreach( $phones as $phone ) : ?>
-						<p class="inline-text"><?= $phone  ?></p>
+						<p class="inline-text"><?= "#" . $phone  ?></p>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				<!-- direccion administrador -->
 				<?php if( !empty($options['contact_address'])) :  ?>
-					<p><?= $options['contact_address']; ?></p>
+					<p style="padding: 0 20px 0 0">
+						<?php 
+							$direc = $options['contact_address']; 
+							$direc = str_replace( 'Surquillo', '<br/>Surquillo', $direc );
+							echo $direc;
+						?>
+					</p>
 				<?php endif; ?>	
 			</section>
 			<!-- FORMULARIO -->

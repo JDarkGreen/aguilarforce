@@ -54,6 +54,18 @@ $color_bg_gray        : #747474
 .text-yellow
 	color: $color_yellow_dark !important 
 
+//texto inline
+p.inline-text
+	display: inline-block
+
+//texto grande 28px
+.big-text
+	font-size: 1.75em
+
+
+//texto standar tamaño
+.text-size-standar
+	font-size: 1em
 
 /***************************************************************************************/
 /**-------------------------       WRAPPER         -        --------------------------**/
@@ -122,7 +134,7 @@ $color_bg_gray        : #747474
 
 //ASIDE PREFOOTER
 .sidebarPreFooter
-	background: $color_black_prefooter
+	background: url('../images/centro_fondo.jpg') no-repeat center / 100% 100%
 	padding   : 35px 0
 
 	//contenedor
@@ -170,19 +182,38 @@ $color_bg_gray        : #747474
 //footer
 .mainFooter
 	background: url('../images/barra_inferior.jpg') no-repeat center / 100% 100%
-
+	border-top: 4px solid $color_yellow_titles
+	
+	//contenido
 	.mainFooter__content
-		min-height: 88px
-		color     : $color_gray_text
+		color          : $color_gray_text
+		justify-content: space-between
+		min-height     : 88px
+		padding        : 15px 0 
+
+	//items
+	.mainFooter__content__item
+		width: 30%
 
 	//parrafo
 	p 
 		color    : $color_gray_text
 		font-size: 13px
 		margin   : 0 auto
+		position : relative
 
 		&.inline-text
 			display: inline-block 
+
+	//clase text-developer
+	.text-developer
+		font-size: 0.8125em
+		position : absolute
+		left     : 0
+		right    : 0
+		bottom   : -30px
+
+
 
 /***************************************************************************************/
 /**--------------------------     LOGO  --------  ------------------------------------**/
@@ -483,7 +514,7 @@ $color_bg_gray        : #747474
 
 			//image
 			img
-				+scale(1.2)
+				+scale(1.1)
 
 		//imagen interna
 		img
@@ -545,16 +576,22 @@ $color_bg_gray        : #747474
 	margin: 20px auto 
 	
 	.section-wrapper__multimedia__content
+		align-items    : baseline
 		flex-wrap      : wrap
 		justify-content: center
 		text-align     : center
 	
 	//article
 	.section-wrapper__multimedia__article
-		margin : 0 15px 15px
-		width  : 30%
+		border  : 4px solid $color_yellow_titles
+		margin  : 0 15px 15px
 		overflow: hidden
-	
+		width   : 30%
+
+		//iframe
+		iframe
+			border  : 4px solid $color_yellow_titles
+
 		//image 
 		img 
 			+transition( all 500ms ease)
@@ -563,6 +600,11 @@ $color_bg_gray        : #747474
 			img 
 				+transform( scale(1.5) )
 				+opacity(0.7)
+
+	//article without border
+	.section-wrapper__multimedia__article--noborder
+		border: none !important 
+
 
 /***************************************************************************************/
 /**---------------------       SECCION BLOG- NOTICIAS    ---- -----------------------**/

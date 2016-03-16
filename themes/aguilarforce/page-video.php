@@ -17,7 +17,9 @@
 	<div class="container">
 
 		<!-- Titulo -->
-		<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Galería de Videos: ' , 'aguilarforce-framework' ); ?></h2>
+		<h2 class="section-wrapper__title text-uppercase">
+			<strong><?php _e( 'Galería de Videos: ' , 'aguilarforce-framework' ); ?></strong>
+		</h2>
 		<br/>
 
 		<!-- Seccion para mostrar contenido -->
@@ -49,7 +51,7 @@
 					<?php  
 						while( $the_query->have_posts() ) : $the_query->the_post();
 					?>
-					<article class="section-wrapper__multimedia__article">
+					<article class="section-wrapper__multimedia__article section-wrapper__multimedia__article--noborder">
 						<!-- video -->
 						<?php  
 							$video = get_post_meta( get_the_id() , 'mb_aguilarforce_url_video_text' , true ); 

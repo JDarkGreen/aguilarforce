@@ -16,8 +16,10 @@
 			<div class="container--center90">
 				
 				<!-- Titulo -->
-				<h2 class="article-post__title text-uppercase">
-					<?php _e( 'Servicios', 'aguilarforce-framework'); ?>
+				<h2 class="section-wrapper__title text-uppercase">
+					<strong>
+						<?php _e( 'Servicios', 'aguilarforce-framework'); ?>
+					</strong>
 				</h2>
 
 				<?php  

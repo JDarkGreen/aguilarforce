@@ -17,7 +17,9 @@
 	<div class="container">
 
 		<!-- Titulo -->
-		<h2 class="section-wrapper__title text-uppercase"><?php _e( get_the_title() , 'aguilarforce-framework' ); ?></h2>
+		<h2 class="section-wrapper__title text-uppercase">
+			<strong><?php _e( get_the_title() , 'aguilarforce-framework' ); ?></strong>
+		</h2>
 		<br/>
 
 		<!-- Seccion para mostrar contenido -->

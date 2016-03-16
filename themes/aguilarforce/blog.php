@@ -12,7 +12,7 @@
 	<div class="container">
 		<!-- Titulo -->
 		<h2 class="section-wrapper__title text-uppercase">
-			<?php echo get_the_title() . ": " ?>
+			<strong><?php echo get_the_title() . ": " ?></strong>
 		</h2><!-- /.ection-wrapper__title text-uppercase" -->
 		<br/>
 		

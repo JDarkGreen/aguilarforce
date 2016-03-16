@@ -13,7 +13,9 @@
 ?>
 	<!-- ARTICULO -->
 	<article class="sidebar-widget-prefooter">
-		<h2 class="section-wrapper__title text-uppercase"><?php _e( 'Aguilar force sac' , 'aguilarforce-framework' ); ?></h2><br>
+		<h2 class="section-wrapper__title text-uppercase">
+			<strong><?php _e( 'Aguilar force sac' , 'aguilarforce-framework' ); ?></strong>
+		</h2><br>
 		<?php $texto = get_the_excerpt(); ?>
 		<p class="text-justify"><?= $texto; ?></p>
 	</article><!-- /.sidebar-widget-prefooter -->
