@@ -12,7 +12,7 @@
 	while( $the_query->have_posts() ) : $the_query->the_post();
 ?>
 	<!-- ARTICULO -->
-	<article class="sidebar-widget-prefooter">
+	<article class="sidebar-widget-prefooter text-justify">
 		<h2 class="section-wrapper__title text-uppercase">
 			<strong><?php _e( 'Aguilar force sac' , 'aguilarforce-framework' ); ?></strong>
 		</h2><br>

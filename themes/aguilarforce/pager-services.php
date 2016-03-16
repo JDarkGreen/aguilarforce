@@ -60,7 +60,7 @@
 								?>
 							</span>
 							<!-- Span franja amarilla -->
-							<span class="yellow-line"></span>
+							<!--span class="yellow-line"></span-->
 						</h2>
 						<!-- Contenido -->
 						<?php 

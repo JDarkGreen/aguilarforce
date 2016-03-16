@@ -25,7 +25,7 @@
 			<!-- Titulo e imagen destacada -->
 			<section class="section-wrapper--contact__article section__presentation">
 				<h2 class="section-wrapper__title text-uppercase"><strong><?php the_title(); ?></strong></h2><br/>
-				<p><?php _e('¡Llene el formulario y solicite más información!','inox-framework'); ?></p>  
+				<!--p><?php _e('¡Llene el formulario y solicite más información!','inox-framework'); ?></p-->  
 				<?php if( has_post_thumbnail() ) : ?>
 					<figure><?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?></figure>
 				<?php endif; ?>
@@ -52,6 +52,10 @@
 						?>
 					</p>
 				<?php endif; ?>	
+				<!-- correo de administrador -->
+				<?php if( !empty($options['contact_email'])) :  ?>
+					<p><?= $options['contact_email']; ?></p>
+				<?php endif; ?>
 			</section>
 			<!-- FORMULARIO -->
 			<form id="form-contact" class="section-wrapper--contact__article" method="post" action="<?= THEMEROOT ?>/php/enviar.php" enctype="multipart/form-data">
@@ -92,7 +96,7 @@
       //crear mapa
       map = new google.maps.Map(document.getElementById('canvas-map'), {
         center: {lat: lat, lng: lng},
-        zoom  : 17
+        zoom  : 16
       });
 
       //infowindow
