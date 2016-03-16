@@ -51,18 +51,18 @@
 				<?php endif; ?>	
 			</section>
 			<!-- FORMULARIO -->
-			<form class="section-wrapper--contact__article" action="">
+			<form id="form-contact" class="section-wrapper--contact__article" method="post" action="<?= THEMEROOT ?>/php/enviar.php" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="input-name"><?php _e('Nombre:','aguilarforce-framework' ); ?></label>
-				    <input type="text" class="form-control" id="input-name" placeholder="Escriba su Nombre" />
+				    <input type="text" class="form-control" id="input-name" name="input-name" placeholder="Escriba su Nombre" data-rules-required="true" data-rules-minlength="4" />
 				</div><!-- /.form-group -->
 				<div class="form-group">
 					<label for="input-email"><?php _e('Email:','aguilarforce-framework' ); ?></label>
-				    <input type="email" class="form-control" id="input-email" placeholder="Escriba su Email" />
+				    <input type="email" class="form-control" id="input-email" name="input-email" placeholder="Escriba su Email"data-rules-required="true" data-rules-email="true" />
 				</div><!-- /.form-group -->
 				<div class="form-group">
 					<label for="textarea-message"><?php _e('Mensaje:','aguilarforce-framework' ); ?></label>
-					<textarea name="textarea-message" id="textarea-message" placeholder="Escriba su Mensaje"></textarea>
+					<textarea name="textarea-message" id="textarea-message" name="textarea-message" placeholder="Escriba su Mensaje" data-rules-required="true" data-rules-minlength="20"></textarea>
 				</div><!-- /.form-group -->
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Enviar</button>

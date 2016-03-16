@@ -70,7 +70,9 @@
 						?>
 					</div> <!-- /-col-xs-5 -->
 					<div class="col-xs-2">
-						<?php $options['logo'] == '' ? $logo = IMAGES . '/logo.png' : $logo = $options['logo']; ?>
+						<?php
+						 	$options['logo'] == '' ? $logo = IMAGES . '/logo.png' : $logo = $options['logo']; 
+						 ?>
 					
 						<h1 class="logo">
 							<a href="<?php echo home_url(); ?>">

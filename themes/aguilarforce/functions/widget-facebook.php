@@ -45,7 +45,7 @@ class AguilarForce_Facebook_Widget extends WP_Widget {
 		extract($args);
 
 			// Get the title and prepare it for display
-		$title = apply_filters('widget_title', $instance['title']);
+		//$title = apply_filters('widget_title', $instance['title']);
 
 			// Get the ad
 		$link_facebook = $instance['link_facebook'];

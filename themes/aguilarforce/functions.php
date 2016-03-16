@@ -12,10 +12,14 @@ define('IMAGES', THEMEROOT.'/images');
 function load_custom_scripts() {
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
 	wp_enqueue_script('bxslider', THEMEROOT . '/js/jquery.bxslider.min.js', array('jquery'), '4.1.2', true);
+	//fancybox
 	wp_enqueue_script('fancybox', THEMEROOT . '/js/jquery.fancybox.pack.js', array('jquery'), '4.1.2', true);
 	//google maps
 	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNMUy9phyQwIbQgX3VujkkoV26-LxjbG0');
   	wp_enqueue_script('google-jsapi','https://www.google.com/jsapi');     
+  	//validator
+  	wp_enqueue_script('validarium-script', THEMEROOT . '/js/jquery.validarium.js',array('jquery'), '' ,true); 
+
   	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/scripts.js', array('jquery'), false, true);
 }

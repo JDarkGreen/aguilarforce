@@ -32,6 +32,11 @@ var j = jQuery.noConflict();
 			'overlayShow'	:	false
 		});
 
+		/****************** VALIDAR FORMULARIO DE CONTACTO  ************************/
+
+		j('#form-contact').validarium();
+
+
 	});
 
 })(jQuery)
