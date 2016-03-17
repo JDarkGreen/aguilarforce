@@ -1,38 +1,38 @@
 <?php
 
-//Incluimos la clase de PHPMailer
-require_once('phpmailer/class.phpmailer.php');
- 
-$correo = new PHPMailer(); //Creamos una instancia en lugar usar mail()
- 
-//Usamos el SetFrom para decirle al script quien envia el correo
-$correo->SetFrom("jgomez.4net@gmail.com", "Mi Codigo PHP");
- 
-//Usamos el AddReplyTo para decirle al script a quien tiene que responder el correo
-$correo->AddReplyTo("jgomez.4net@gmail.com","Mi Codigo PHP");
- 
-//Usamos el AddAddress para agregar un destinatario
-$correo->AddAddress("djgomez.4net@gmail.com", "Robot");
- 
-//Ponemos el asunto del mensaje
-$correo->Subject = "Mi primero correo con PHPMailer";
- 
-/*
- * Si deseamos enviar un correo con formato HTML utilizaremos MsgHTML:
- * $correo->MsgHTML("<strong>Mi Mensaje en HTML</strong>");
- * Si deseamos enviarlo en texto plano, haremos lo siguiente:
- * $correo->IsHTML(false);
- * $correo->Body = "Mi mensaje en Texto Plano";
- */
-$correo->MsgHTML("Mi Mensaje en <strong>HTML</strong>");
- 
-//Si deseamos agregar un archivo adjunto utilizamos AddAttachment
- 
-//Enviamos el correo
-if(!$correo->Send()) {
-  echo "Hubo un error: " . $correo->ErrorInfo;
-} else {
-  echo "Mensaje enviado con exito.";
-}
- 
+	include("phpmailer2/class.phpmailer.php");
+ 	include("phpmailer2/class.smtp.php");
+
+	$mail = new PHPMailer();
+	$mail->IsSMTP(); // send via SMTP
+	 $mail->SMTPSecure = 'ssl';
+	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+ 	$mail->Port = 465;
+	$mail->SMTPAuth = true; // turn on SMTP authentication
+	$mail->Username = "jgomez.4net@gmail.com"; // Enter your SMTP username
+	$mail->Password = "ARLAC_RINO6EVER"; // SMTP password
+	$webmaster_email = "jgomez.4net@gmail.com"; //Add reply-to email address
+	$email="jgomez.4net@gmail.com"; // Add recipients email address
+	$name="name"; // Add Your Recipient’s name
+	$mail->From = $webmaster_email;
+	$mail->FromName = "Webmaster";
+	$mail->AddAddress($email,$name);
+	$mail->AddReplyTo($webmaster_email,"Webmaster");
+	$mail->WordWrap = 50; // set word wrap
+#	$mail->AddAttachment("/var/tmp/file.tar.gz"); // attachment
+#	$mail->AddAttachment("/tmp/image.jpg", "new.jpg"); // attachment
+	$mail->IsHTML(true); // send as HTML
+
+	$mail->Subject = "This is your subject";
+
+	$mail->Body = "Hi, this is your email body, etc, etc" ;      //HTML Body
+
+	$mail->AltBody = "Hi, this is your email body, etc, etc";     //Plain Text Body
+
+	if(!$mail->Send()){
+		echo "Mailer Error: " . $mail->ErrorInfo;
+	} else {
+		echo "Message has been sent";
+	}
+
 ?>
