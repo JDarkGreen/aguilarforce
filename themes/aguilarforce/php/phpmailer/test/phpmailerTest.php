@@ -361,6 +361,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             '"Fred\ Bloggs"@iana.org',
             '"Joe.\Blow"@iana.org',
             '"Abc@def"@iana.org',
+            '"Fred Bloggs"@iana.org',
             'user+mailbox@iana.org',
             'customer/department=shipping@iana.org',
             '$A12345@iana.org',
@@ -466,7 +467,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             'first.last@[IPv6:a1::b2:11.22.33.44]',
             'test@test.com',
             'test@xn--example.com',
-            'test@example.com'
+            'test@example.com',
         );
         $invalidaddresses = array(
             'first.last@sub.do,com',
@@ -607,7 +608,6 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             'first.last@[IPv6:a1:a2:a3:a4:b1:b2:b3:]',
             'first.last@[IPv6::a2:a3:a4:b1:b2:b3:b4]',
             'first.last@[IPv6:a1:a2:a3:a4::b1:b2:b3:b4]',
-            "(\r\n RCPT TO:user@example.com\r\n DATA \\\nSubject: spam10\\\n\r\n Hello,\r\n this is a spam mail.\\\n.\r\n QUIT\r\n ) a@example.net" //This is valid RCC5322, but we don't want to allow it
         );
         // IDNs in Unicode and ASCII forms.
         $unicodeaddresses = array(
@@ -1127,6 +1127,11 @@ EOT;
 
         $this->buildBody();
         $this->assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
+        if (is_writable('.')) {
+            file_put_contents('message.txt', $this->Mail->createHeader() . $this->Mail->createBody());
+        } else {
+            $this->assertTrue(false, 'Could not write local file - check permissions');
+        }
     }
 
     /**
@@ -1503,24 +1508,6 @@ EOT;
     }
 
     /**
-     * Test MIME structure assembly.
-     */
-    public function testMIMEStructure()
-    {
-        $this->Mail->Subject .= ': MIME structure';
-        $this->Mail->Body = '<h3>MIME structure test.</h3>';
-        $this->Mail->AltBody = 'MIME structure test.';
-        $this->buildBody();
-        $this->Mail->preSend();
-        $this->assertRegExp(
-            "/Content-Transfer-Encoding: 8bit\r\n\r\n".
-            "This is a multi-part message in MIME format./",
-            $this->Mail->getSentMIMEMessage(),
-            'MIME structure broken'
-        );
-    }
-
-    /**
      * Test BCC-only addressing.
      */
     public function testBCCAddressing()
@@ -1602,8 +1589,8 @@ EOT;
             "private_key_type" => OPENSSL_KEYTYPE_RSA,
         );
         $password = 'password';
-        $certfile = 'certfile.pem';
-        $keyfile = 'keyfile.pem';
+        $certfile = 'certfile.txt';
+        $keyfile = 'keyfile.txt';
 
         //Make a new key pair
         $pk = openssl_pkey_new($keyconfig);
@@ -1794,18 +1781,7 @@ EOT;
         $this->buildBody();
         $this->Mail->preSend();
         $lastid = $this->Mail->getLastMessageID();
-        $this->assertNotEquals($lastid, $id, 'Invalid Message ID allowed');
-        $id = '<'.md5(12345).'@example.com>';
-        $this->Mail->MessageID = $id;
-        $this->buildBody();
-        $this->Mail->preSend();
-        $lastid = $this->Mail->getLastMessageID();
-        $this->assertEquals($lastid, $id, 'Custom Message ID not used');
-        $this->Mail->MessageID = '';
-        $this->buildBody();
-        $this->Mail->preSend();
-        $lastid = $this->Mail->getLastMessageID();
-        $this->assertRegExp('/^<.*@.*>$/', $lastid, 'Invalid default Message ID');
+        $this->assertEquals($lastid, $id, 'Custom Message ID mismatch');
     }
 
     /**
@@ -1849,11 +1825,73 @@ EOT;
         $this->assertEquals($q['extension'], 'mp3', 'Windows extension not matched');
         $this->assertEquals($q['filename'], '飛兒樂 團光茫', 'Windows filename not matched');
     }
-    public function testBadSMTP()
+
+    /**
+     * Use a fake POP3 server to test POP-before-SMTP auth.
+     * With a known-good login
+     */
+    public function testPopBeforeSmtpGood()
     {
-        $this->Mail->smtpConnect();
-        $smtp = $this->Mail->getSMTPInstance();
-        $this->assertFalse($smtp->mail("somewhere\nbad"), 'Bad SMTP command containing breaks accepted');
+        //Start a fake POP server
+        $pid = shell_exec('nohup ./runfakepopserver.sh >/dev/null 2>/dev/null & printf "%u" $!');
+        $this->pids[] = $pid;
+
+        sleep(2);
+        //Test a known-good login
+        $this->assertTrue(
+            POP3::popBeforeSmtp('localhost', 1100, 10, 'user', 'test', $this->Mail->SMTPDebug),
+            'POP before SMTP failed'
+        );
+        //Kill the fake server
+        shell_exec('kill -TERM '.escapeshellarg($pid));
+        sleep(2);
+    }
+
+    /**
+     * Use a fake POP3 server to test POP-before-SMTP auth.
+     * With a known-bad login
+     */
+    public function testPopBeforeSmtpBad()
+    {
+        //Start a fake POP server on a different port
+        //so we don't inadvertently connect to the previous instance
+        $pid = shell_exec('nohup ./runfakepopserver.sh 1101 >/dev/null 2>/dev/null & printf "%u" $!');
+        $this->pids[] = $pid;
+
+        sleep(2);
+        //Test a known-bad login
+        $this->assertFalse(
+            POP3::popBeforeSmtp('localhost', 1101, 10, 'user', 'xxx', $this->Mail->SMTPDebug),
+            'POP before SMTP should have failed'
+        );
+        shell_exec('kill -TERM '.escapeshellarg($pid));
+        sleep(2);
+    }
+
+    /**
+     * Test SMTP host connections.
+     * This test can take a long time, so run it last
+     */
+    public function testSmtpConnect()
+    {
+        $this->Mail->SMTPDebug = 4; //Show connection-level errors
+        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP single connect failed');
+        $this->Mail->smtpClose();
+        $this->Mail->Host = "ssl://localhost:12345;tls://localhost:587;10.10.10.10:54321;localhost:12345;10.10.10.10";
+        $this->assertFalse($this->Mail->smtpConnect(), 'SMTP bad multi-connect succeeded');
+        $this->Mail->smtpClose();
+        $this->Mail->Host = "localhost:12345;10.10.10.10:54321;" . $_REQUEST['mail_host'];
+        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP multi-connect failed');
+        $this->Mail->smtpClose();
+        $this->Mail->Host = " localhost:12345 ; " . $_REQUEST['mail_host'] . ' ';
+        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP hosts with stray spaces failed');
+        $this->Mail->smtpClose();
+        $this->Mail->Host = $_REQUEST['mail_host'];
+        //Need to pick a harmless option so as not cause problems of its own! socket:bind doesn't work with Travis-CI
+        $this->assertTrue(
+            $this->Mail->smtpConnect(array('ssl' => array('verify_depth' => 10))),
+            'SMTP connect with options failed'
+        );
     }
 
     /**
@@ -2004,79 +2042,11 @@ EOT;
             count($this->Mail->getReplyToAddresses()),
             'Bad count of "reply-to" addresses');
     }
-
-    /**
-     * Use a fake POP3 server to test POP-before-SMTP auth.
-     * With a known-good login
-     */
-    public function testPopBeforeSmtpGood()
-    {
-        //Start a fake POP server
-        $pid = shell_exec('nohup ./runfakepopserver.sh >/dev/null 2>/dev/null & printf "%u" $!');
-        $this->pids[] = $pid;
-
-        sleep(2);
-        //Test a known-good login
-        $this->assertTrue(
-            POP3::popBeforeSmtp('localhost', 1100, 10, 'user', 'test', $this->Mail->SMTPDebug),
-            'POP before SMTP failed'
-        );
-        //Kill the fake server
-        shell_exec('kill -TERM ' . escapeshellarg($pid));
-        sleep(2);
-    }
-
-    /**
-     * Use a fake POP3 server to test POP-before-SMTP auth.
-     * With a known-bad login
-     */
-    public function testPopBeforeSmtpBad()
-    {
-        //Start a fake POP server on a different port
-        //so we don't inadvertently connect to the previous instance
-        $pid = shell_exec('nohup ./runfakepopserver.sh 1101 >/dev/null 2>/dev/null & printf "%u" $!');
-        $this->pids[] = $pid;
-
-        sleep(2);
-        //Test a known-bad login
-        $this->assertFalse(
-            POP3::popBeforeSmtp('localhost', 1101, 10, 'user', 'xxx', $this->Mail->SMTPDebug),
-            'POP before SMTP should have failed'
-        );
-        shell_exec('kill -TERM ' . escapeshellarg($pid));
-        sleep(2);
-    }
-
-    /**
-     * Test SMTP host connections.
-     * This test can take a long time, so run it last
-     */
-    public function testSmtpConnect()
-    {
-        $this->Mail->SMTPDebug = 4; //Show connection-level errors
-        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP single connect failed');
-        $this->Mail->smtpClose();
-        $this->Mail->Host = "ssl://localhost:12345;tls://localhost:587;10.10.10.10:54321;localhost:12345;10.10.10.10";
-        $this->assertFalse($this->Mail->smtpConnect(), 'SMTP bad multi-connect succeeded');
-        $this->Mail->smtpClose();
-        $this->Mail->Host = "localhost:12345;10.10.10.10:54321;" . $_REQUEST['mail_host'];
-        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP multi-connect failed');
-        $this->Mail->smtpClose();
-        $this->Mail->Host = " localhost:12345 ; " . $_REQUEST['mail_host'] . ' ';
-        $this->assertTrue($this->Mail->smtpConnect(), 'SMTP hosts with stray spaces failed');
-        $this->Mail->smtpClose();
-        $this->Mail->Host = $_REQUEST['mail_host'];
-        //Need to pick a harmless option so as not cause problems of its own! socket:bind doesn't work with Travis-CI
-        $this->assertTrue(
-            $this->Mail->smtpConnect(array('ssl' => array('verify_depth' => 10))),
-            'SMTP connect with options failed'
-        );
-    }
 }
 
 /**
  * This is a sample form for setting appropriate test values through a browser
- * These values can also be set using a file called testbootstrap.php (not in repo) in the same folder as this script
+ * These values can also be set using a file called testbootstrap.php (not in svn) in the same folder as this script
  * which is probably more useful if you run these tests a lot
  * <html>
  * <body>

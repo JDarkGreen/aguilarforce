@@ -1,7 +1,7 @@
 <?php
 
-	include("phpmailer2/class.phpmailer.php");
- 	include("phpmailer2/class.smtp.php");
+	include("phpmailer/class.phpmailer.php");
+ 	include("phpmailer/class.smtp.php");
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP(); // send via SMTP
